@@ -21,8 +21,9 @@ export const SearchParams = () => {
 
   console.log("render");
   return (
-    <div className="search-params">
+    <div className="mx-auto my-10 w-11/12">
       <form
+        className="mb-10 flex flex-col items-center justify-center rounded-lg bg-gray-200 p-10 shadow-lg"
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.target);
