@@ -45,7 +45,7 @@ export const SearchParams = () => {
         <label htmlFor="localion">
           Location
           <input
-            className="mb-5 block w-60"
+            className="search-input"
             type="text"
             id="location"
             name="location"
@@ -58,7 +58,7 @@ export const SearchParams = () => {
           <select
             name="animal"
             id="animal"
-            className="mb-5 block w-60"
+            className="search-input"
             onChange={(e) => {
               setAnimal(e.target.value);
             }}
@@ -76,7 +76,7 @@ export const SearchParams = () => {
         <label htmlFor="breed">
           Breeds
           <select
-            className="mb-5 block w-60 disabled:opacity-50"
+            className="search-input grayed-out-disabled"
             name="breed"
             id="breed"
             disabled={breeds.length === 0}
