@@ -1,7 +1,7 @@
 import { Pet } from "./Pet";
 
 export const Results = ({ pets }) => (
-  <div className="search">
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {pets.length ? (
       pets.map((pet) => (
         <Pet
