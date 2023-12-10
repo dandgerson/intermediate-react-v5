@@ -91,7 +91,7 @@ export const SearchParams = () => {
           <h2 className="loader">🌀</h2>
         </div>
       ) : (
-        { renderedPets }
+        renderedPets
       )}
     </div>
   );
