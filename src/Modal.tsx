@@ -1,15 +1,25 @@
-import { useCallback, useEffect, useRef } from "react";
+import { ReactElement, useCallback, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-export const Modal = ({ renderContent, target, onCancel = () => {} }) => {
-  const elRef = useRef(null);
+type ModalProps = {
+  renderContent: () => ReactElement;
+  target: string;
+  onCancel?: () => void;
+};
+
+export const Modal = ({
+  renderContent,
+  target,
+  onCancel = () => {},
+}: ModalProps) => {
+  const elRef = useRef<HTMLDivElement | null>(null);
 
   if (!elRef.current) {
     elRef.current = document.createElement("div");
   }
 
   const handleOnCancel = useCallback(
-    (e) => {
+    (e: Event) => {
       if (e.target === document.querySelector(target)) {
         onCancel();
       }
@@ -19,12 +29,18 @@ export const Modal = ({ renderContent, target, onCancel = () => {} }) => {
 
   useEffect(() => {
     const modalRoot = document.querySelector(target);
+
+    if (!modalRoot || !elRef.current) return;
+
     modalRoot.appendChild(elRef.current);
     modalRoot.addEventListener("click", handleOnCancel);
 
     return () => {
-      modalRoot.removeChild(elRef.current);
       modalRoot.removeEventListener("click", handleOnCancel);
+
+      if (elRef.current) {
+        modalRoot.removeChild(elRef.current);
+      }
     };
   }, [target, onCancel, handleOnCancel]);
 
