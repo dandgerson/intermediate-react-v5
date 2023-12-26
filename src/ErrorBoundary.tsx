@@ -1,6 +1,11 @@
-import { Component } from "react";
+import { Component, ErrorInfo, ReactElement } from "react";
 
-export class ErrorBoundary extends Component {
+type Props = {
+  renderErrorContent: () => ReactElement | string;
+  children: ReactElement;
+};
+
+export class ErrorBoundary extends Component<Props> {
   state = {
     hasError: false,
   };
@@ -11,7 +16,7 @@ export class ErrorBoundary extends Component {
     };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error: Error, info: ErrorInfo) {
     // typically you would like to log this to something like TrackJS or NewRelic
     console.error("ErrorBoundary component caught the error", error, info);
   }

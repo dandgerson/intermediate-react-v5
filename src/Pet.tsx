@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { Pet as PetType } from "./apiResponseTypes";
 
-export const Pet = ({ name, animal, breed, location, id, images }) => {
+export const Pet = ({
+  name,
+  animal,
+  breed,
+  location,
+  id,
+  images,
+}: PetType & { location: string }) => {
   const hero = "http://pets-images.dev-apis.com/pets/none.jpg";
 
   return (
