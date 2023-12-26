@@ -13,7 +13,7 @@ export const SearchParams = () => {
     breed: "",
   });
   const [animal, setAnimal] = useState("");
-  const [breeds, status] = useBreedList(animal);
+  const [breeds] = useBreedList(animal);
   const [adoptedPet] = useAdoptedPetContext();
 
   const results = useQuery(["search", requestParams], fetchSearch);

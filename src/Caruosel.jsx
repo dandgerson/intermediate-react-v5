@@ -24,6 +24,7 @@ export class Carousel extends Component {
               alt="animal thumbnail"
               className={active === i ? "active" : ""}
               data-index={i}
+              role="presentation"
               onClick={(e) => {
                 this.setState({
                   active: Number(e.target.dataset.index),
