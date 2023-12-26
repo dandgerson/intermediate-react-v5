@@ -1,6 +1,10 @@
-import { Component } from "react";
+import React, { Component, MouseEvent } from "react";
 
-export class Carousel extends Component {
+type Props = {
+  images: string[];
+};
+
+export class Carousel extends Component<Props> {
   state = {
     active: 0,
   };
@@ -25,7 +29,9 @@ export class Carousel extends Component {
               className={active === i ? "active" : ""}
               data-index={i}
               role="presentation"
-              onClick={(e) => {
+              onClick={(e: MouseEvent<HTMLElement>) => {
+                if (!(e.target instanceof HTMLElement)) return;
+
                 this.setState({
                   active: Number(e.target.dataset.index),
                 });
