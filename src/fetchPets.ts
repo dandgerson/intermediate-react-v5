@@ -1,4 +1,4 @@
-import { QueryFunction, QueryKey } from "@tanstack/react-query";
+import { QueryFunction } from "@tanstack/react-query";
 import { PetApiResponse } from "./apiResponseTypes";
 
 export const fetchPets: QueryFunction<

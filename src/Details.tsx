@@ -6,7 +6,6 @@ import { ErrorBoundary } from "./ErrorBoundary";
 import { useState } from "react";
 import { Modal } from "./Modal";
 import { useAdoptedPetContext } from "./AdoptedPetContext";
-import { PetApiResponse } from "./apiResponseTypes";
 
 export const Details = () => {
   const { id } = useParams();
@@ -16,7 +15,7 @@ export const Details = () => {
       "Why did you not give me an id. I wanted an id. I have no id"
     );
 
-  const results = useQuery<PetApiResponse>(["details", id], fetchPets);
+  const results = useQuery(["details", id], fetchPets);
   const [isModalShown, setIsModalShown] = useState(false);
   const navigate = useNavigate();
   const [, setAdoptPet] = useAdoptedPetContext();
