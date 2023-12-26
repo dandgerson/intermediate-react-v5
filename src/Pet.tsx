@@ -8,7 +8,7 @@ export const Pet = ({
   location,
   id,
   images,
-}: PetType & { location: string }) => {
+}: Omit<PetType, "city" | "state" | "description"> & { location: string }) => {
   const hero = "http://pets-images.dev-apis.com/pets/none.jpg";
 
   return (

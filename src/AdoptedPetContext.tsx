@@ -8,7 +8,7 @@ const AdoptedPetContext = createContext<
 export const AdoptedPetContextProvider = ({
   children,
 }: {
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 }) => {
   const petState = useState<Pet | null>(null);
 
