@@ -5,8 +5,11 @@ import { Carousel } from "./Caruosel";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { useState } from "react";
 import { Modal } from "./Modal";
+import { useDispatch } from "react-redux";
+import { adopt } from "./adoptedPetSlice";
 
 export const Details = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const results = useQuery(["details", id], fetchPets);
   const [isModalShown, setIsModalShown] = useState(false);
@@ -47,7 +50,7 @@ export const Details = () => {
                     <button
                       onClick={() => {
                         setIsModalShown(false);
-                        // setAdoptPet(pet);
+                        dispatch(adopt(pet));
                         navigate("/");
                       }}
                     >

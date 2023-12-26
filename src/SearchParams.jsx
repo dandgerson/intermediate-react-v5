@@ -3,6 +3,8 @@ import { useBreedList } from "./useBreedList";
 import { Results } from "./Results";
 import { useQuery } from "@tanstack/react-query";
 import { fetchSearch } from "./fetchSearch";
+import { useSelector } from "react-redux";
+
 const animals = ["bird", "dog", "cat", "reptile", "rabbit"];
 
 export const SearchParams = () => {
@@ -16,6 +18,8 @@ export const SearchParams = () => {
 
   const results = useQuery(["search", requestParams], fetchSearch);
   const pets = results?.data?.pets ?? [];
+
+  const adoptedPet = useSelector((state) => state.adoptedPet.value);
 
   console.log("render");
   return (
@@ -33,12 +37,11 @@ export const SearchParams = () => {
           setRequestParams(params);
         }}
       >
-        <div>Adopted pet image</div>
-        {/* {adoptedPet ? (
+        {adoptedPet ? (
           <div className="pet image-container">
             <img src={adoptedPet.images[0]} alt={adoptedPet.name} />
           </div>
-        ) : null} */}
+        ) : null}
 
         <label htmlFor="localion">
           Location
