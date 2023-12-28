@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "test": "vitest"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@testing-library/react": "^14.1.2",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.1.0",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
