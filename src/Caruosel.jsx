@@ -14,8 +14,8 @@ export class Carousel extends Component {
     const { images } = this.props;
 
     return (
-      <div className="carousel">
-        <img src={images[active]} alt="animal hero" />
+      <div className="carousel" data-testid="carousel">
+        <img src={images[active]} alt="animal hero" data-testid="hero" />
         <div className="carousel-smaller">
           {images.map((image, i) => (
             <img
@@ -24,11 +24,13 @@ export class Carousel extends Component {
               alt="animal thumbnail"
               className={active === i ? "active" : ""}
               data-index={i}
+              role="presentation"
               onClick={(e) => {
                 this.setState({
                   active: Number(e.target.dataset.index),
                 });
               }}
+              data-testid={`thumbnail${i}`}
             />
           ))}
         </div>
