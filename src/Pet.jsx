@@ -6,7 +6,11 @@ export const Pet = ({ name, animal, breed, location, id, images }) => {
   return (
     <Link to={`/details/${id}`} className="pet">
       <div className="image-container">
-        <img src={images.length ? images[0] : hero} alt={name} />
+        <img
+          data-testid="thumbnail"
+          src={images?.length ? images[0] : hero}
+          alt={name}
+        />
       </div>
       <div className="info">
         <h1>{name}</h1>
