@@ -1,0 +1,118 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`render corrects with no pets 1`] = `
+<DocumentFragment>
+  <div
+    class="search"
+  >
+    <h1>
+      No Pets found!
+    </h1>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`render corrects with pets 1`] = `
+<DocumentFragment>
+  <div
+    class="search"
+  >
+    <a
+      class="pet"
+      href="/details/1"
+    >
+      <div
+        class="image-container"
+      >
+        <img
+          alt="Luna"
+          data-testid="thumbnail"
+          src="http://pets-images.dev-apis.com/pets/dog25.jpg"
+        />
+      </div>
+      <div
+        class="info"
+      >
+        <h1>
+          Luna
+        </h1>
+        <h2>
+          dog - Havanese - Seattle, WA
+        </h2>
+      </div>
+    </a>
+    <a
+      class="pet"
+      href="/details/2"
+    >
+      <div
+        class="image-container"
+      >
+        <img
+          alt="Bunnahabhain"
+          data-testid="thumbnail"
+          src="http://pets-images.dev-apis.com/pets/dog31.jpg"
+        />
+      </div>
+      <div
+        class="info"
+      >
+        <h1>
+          Bunnahabhain
+        </h1>
+        <h2>
+          dog - Goldendoodle - Minneapolis, MN
+        </h2>
+      </div>
+    </a>
+    <a
+      class="pet"
+      href="/details/3"
+    >
+      <div
+        class="image-container"
+      >
+        <img
+          alt="Olive"
+          data-testid="thumbnail"
+          src="http://pets-images.dev-apis.com/pets/dog34.jpg"
+        />
+      </div>
+      <div
+        class="info"
+      >
+        <h1>
+          Olive
+        </h1>
+        <h2>
+          dog - Boxer - Minneapolis, MN
+        </h2>
+      </div>
+    </a>
+    <a
+      class="pet"
+      href="/details/4"
+    >
+      <div
+        class="image-container"
+      >
+        <img
+          alt="Sudo"
+          data-testid="thumbnail"
+          src="http://pets-images.dev-apis.com/pets/dog37.jpg"
+        />
+      </div>
+      <div
+        class="info"
+      >
+        <h1>
+          Sudo
+        </h1>
+        <h2>
+          dog - Wheaten Terrier - Denver, CO
+        </h2>
+      </div>
+    </a>
+  </div>
+</DocumentFragment>
+`;
