@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useBreedList } from "./useBreedList";
 import { Results } from "./Results";
-import { useQuery } from "@tanstack/react-query";
-import { fetchSearch } from "./fetchSearch";
 import { useSelector, useDispatch } from "react-redux";
-import { all } from "./ searchParamsSlice";
+import { all } from "./searchParamsSlice";
+import { useBreedListQuery, useSearchQuery } from "./petApiService";
 
 const animals = ["bird", "dog", "cat", "reptile", "rabbit"];
 
@@ -12,12 +10,11 @@ export const SearchParams = () => {
   const dispatch = useDispatch();
 
   const [animal, setAnimal] = useState("");
-  const [breeds] = useBreedList(animal);
+  const { data: breeds } = useBreedListQuery(animal, { skip: !animal });
 
   const requestParams = useSelector((state) => state.searchParams.value);
 
-  const results = useQuery(["search", requestParams], fetchSearch);
-  const pets = results?.data?.pets ?? [];
+  const serchResults = useSearchQuery(requestParams);
 
   const adoptedPet = useSelector((state) => state.adoptedPet.value);
 
@@ -68,9 +65,9 @@ export const SearchParams = () => {
 
         <label htmlFor="breed">
           Breeds
-          <select name="breed" id="breed" disabled={breeds.length === 0}>
+          <select name="breed" id="breed" disabled={!breeds}>
             <option />
-            {breeds.map((breedName) => (
+            {breeds?.map((breedName) => (
               <option key={breedName} value={breedName}>
                 {breedName}
               </option>
@@ -81,12 +78,12 @@ export const SearchParams = () => {
         <button>Submit</button>
       </form>
 
-      {results.isLoading ? (
+      {serchResults.isLoading ? (
         <div className="loading-pane">
           <h2 className="loader">🌀</h2>
         </div>
       ) : (
-        <Results pets={pets} />
+        <Results pets={serchResults.data} />
       )}
     </div>
   );
